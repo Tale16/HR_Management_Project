@@ -1,176 +1,42 @@
-// import Login from "./HRloginpage";
-// import React, { useState } from "react";
-// import axios from "axios";
-// export const Page = ({ onRegisterSuccess }) => {
+import React from "react";
 
-
-//   const [formData, setFormData] = useState({
-//     fullname: "",
-//     region: "",
-//     resume: null,
-//     mob_number: "",
-//     degree: ""
-//   });
-
-//   const handleChange = (e) => {
-//     const { name, value, files } = e.target;
-//     if (name === "resume") {
-//       setFormData({ ...formData, resume: files[0] }); // file input
-//     } else {
-//       setFormData({ ...formData, [name]: value }); // text inputs
-//     }
-//   };
-
-//     const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     const data = new FormData();
-//     data.append("fullname", formData.fullname);
-//     data.append("region", formData.region);
-//     data.append("resume", formData.resume);
-//     data.append("mob_number", formData.mob_number);
-//     data.append("degree", formData.degree);
-
-//     try {
-//       const res = await axios.post("http://localhost:3000/api/student", data);
-//       alert(res.data.message);
-//       onRegisterSuccess(); // 👈 switch to login page after registration
-//     } catch (err) {
-//       console.error(err);
-//       alert("Error submitting form");
-//     }
-//   };
-  
-
-//   return (
-//     <>
-//       <h2 style={{ textAlign: "center", color: "#333" }}>Registration Form</h2>
-//       <form onSubmit={handleSubmit} style={{
-//         maxWidth: "400px",
-//         margin: "auto",
-//         backgroundColor: "#fff",
-//         padding: "20px",
-//         borderRadius: "8px",
-//         boxShadow: "0 0 10px rgba(0,0,0,0.1)"
-//       }}>
-//         <label>Full Name:</label>
-//         <input type="text" name="fullname" onChange={handleChange} required />
-
-//         <label>Region:</label>
-//         <input type="text" name="region" onChange={handleChange} required />
-
-//         <label>Upload Resume:</label>
-//         <input type="file" name="resume" onChange={handleChange} required />
-
-//         <label>Mobile Number:</label>
-//         <input type="tel" name="mob_number" onChange={handleChange} required />
-
-//         <label>Degree:</label>
-//         <input type="text" name="degree" onChange={handleChange} required />
-
-//        <input type="submit" value="Register" />
-//       </form>
-//     </>
-//   );
-
-
-// };
-
-
-
-import Login from "./HRloginpage";
-import React, { useState } from "react";
-import axios from "axios";
-
-export const Page = ({ onRegisterSuccess }) => {
-  const [formData, setFormData] = useState({
-    fullname: "",
-    region: "",
-    resume: null,
-    mob_number: "",
-    degree: ""
-  });
-
-  const handleChange = (e) => {
-    const { name, value, files } = e.target;
-    if (name === "resume") {
-      setFormData({ ...formData, resume: files[0] });
-    } else {
-      setFormData({ ...formData, [name]: value });
-    }
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const data = new FormData();
-    data.append("fullname", formData.fullname);
-    data.append("region", formData.region);
-    data.append("resume", formData.resume);
-    data.append("mob_number", formData.mob_number);
-    data.append("degree", formData.degree);
-
-    try {
-      const res = await axios.post("http://localhost:3000/api/student", data);
-      alert(res.data.message);
-      onRegisterSuccess();
-    } catch (err) {
-      console.error(err);
-      alert("Error submitting form");
-    }
-  };
-
+export const Page = () => {
   return (
     <>
-      <h2 style={{
-        textAlign: "center",
-        color: "#333",
-        marginTop: "30px",
-        fontFamily: "Segoe UI, sans-serif"
-      }}>Registration Form</h2>
+      <h2 style={{ textAlign: "center", color: "#333" }}>Registration Form</h2>
 
-      <form onSubmit={handleSubmit} style={{
-        maxWidth: "450px",
-        margin: "30px auto",
-        backgroundColor: "#ffffff",
-        padding: "30px",
-        borderRadius: "12px",
-        boxShadow: "0 4px 20px rgba(0, 0, 0, 0.15)",
-        fontFamily: "Segoe UI, sans-serif"
-      }}>
-        <label style={{ display: "block", marginBottom: "8px", fontWeight: "bold" }}>Full Name:</label>
-        <input type="text" name="fullname" onChange={handleChange} required
-          style={{ width: "100%", padding: "10px", marginBottom: "20px", borderRadius: "6px", border: "1px solid #ccc" }} />
+      <form style={{
+        maxWidth: "400px",
+        margin: "auto",
+        backgroundColor: "#fff",
+        padding: "20px",
+        borderRadius: "8px",
+        boxShadow: "0 0 10px rgba(0,0,0,0.1)"
+        }}>
+        <label htmlFor="fullname" style={{ display: "block", marginBottom: "8px" }}>Full Name:</label>
+        <input type="text" id="fullname" name="fullname" style={{ width: "100%", padding: "8px", marginBottom: "12px" }} />
 
-        <label style={{ display: "block", marginBottom: "8px", fontWeight: "bold" }}>Region:</label>
-        <input type="text" name="region" onChange={handleChange} required
-          style={{ width: "100%", padding: "10px", marginBottom: "20px", borderRadius: "6px", border: "1px solid #ccc" }} />
+        <label htmlFor="region" style={{ display: "block", marginBottom: "8px" }}>Region:</label>
+        <input type="text" id="region" name="region" style={{ width: "100%", padding: "8px", marginBottom: "12px" }} />
 
-        <label style={{ display: "block", marginBottom: "8px", fontWeight: "bold" }}>Upload Resume:</label>
-        <input type="file" name="resume" onChange={handleChange} required
-          style={{ width: "100%", marginBottom: "20px", borderRadius: "6px" }} />
+        <label htmlFor="resume" style={{ display: "block", marginBottom: "8px" }}>Upload Resume:</label>
+        <input type="file" id="resume" name="resume" style={{ marginBottom: "12px" }} />
 
-        <label style={{ display: "block", marginBottom: "8px", fontWeight: "bold" }}>Mobile Number:</label>
-        <input type="tel" name="mob_number" onChange={handleChange} required
-          style={{ width: "100%", padding: "10px", marginBottom: "20px", borderRadius: "6px", border: "1px solid #ccc" }} />
+        <label htmlFor="mob_number" style={{ display: "block", marginBottom: "8px" }}>Mobile Number:</label>
+        <input type="tel" id="mob_number" name="mob_number" style={{ width: "100%", padding: "8px", marginBottom: "12px" }} />
 
-        <label style={{ display: "block", marginBottom: "8px", fontWeight: "bold" }}>Degree:</label>
-        <input type="text" name="degree" onChange={handleChange} required
-          style={{ width: "100%", padding: "10px", marginBottom: "20px", borderRadius: "6px", border: "1px solid #ccc" }} />
+        <label htmlFor="degree" style={{ display: "block", marginBottom: "8px" }}>Degree:</label>
+        <input type="text" id="degree" name="degree" style={{ width: "100%", padding: "8px", marginBottom: "20px" }} />
 
-        <input type="submit" value="Register"
-          style={{
-            width: "100%",
-            padding: "12px",
-            backgroundColor: "#4CAF50",
-            color: "white",
-            fontWeight: "bold",
-            border: "none",
-            borderRadius: "6px",
-            cursor: "pointer",
-            transition: "background-color 0.3s"
-          }}
-          onMouseOver={e => e.target.style.backgroundColor = "#45a049"}
-          onMouseOut={e => e.target.style.backgroundColor = "#4CAF50"}
-        />
+        <input type="submit" value="Register" style={{
+          width: "100%",
+          padding: "10px",
+          backgroundColor: "#4CAF50",
+          color: "white",
+          border: "none",
+          borderRadius: "4px",
+          cursor: "pointer"
+        }} />
       </form>
     </>
   );

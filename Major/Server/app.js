@@ -1,26 +1,20 @@
-
-import express from "express";
 import mongoose from "mongoose";
-import cors from "cors";
-import studentRoutes from "./Router/all_router.js"; 
+import {Student} from "./mongodb/module.js"
 
-const app = express();
-const port = 3000;
 
-// Middleware
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
-// Test route
-app.get("/api/message", (req, res) => {
-  res.json({ message: "hello" });
-});
+mongoose.connect('mongodb://localhost:27017/Server_side_project')
+// const newStudent = new Student({
+//     fullname: "Kartikeya Kumar",
+//     region: "Pune",
+//     resume: "kartikey_resume.pdf",
+//     mob_number: "9876543210",
+//     degree: "B.Tech"
+// });
 
-// Use student routes under /api
-app.use("/api", studentRoutes);
+// newStudent.save()
 
-// Start server
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
-});
+
+
+
+
