@@ -1,0 +1,3 @@
+nohup mongod --config /usr/local/mongodb/mongod.conf &
+
+ps aux | grep mongod
